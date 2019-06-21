@@ -1,0 +1,8 @@
+<div class="wrapper">
+    <label for="" style="color:white; font-size: 18px;">Ordered by </label>
+    <select (change)='onSelectChange($event)'>
+      <option *ngFor='let filter of filters' [value]="filter.value" >{{filter.name}}</option>
+    </select>
+    <div class="triangle"></div>
+  </div>
+  

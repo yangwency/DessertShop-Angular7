@@ -1,0 +1,46 @@
+<head>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+</head>
+<div class="wrapper" [class.unavailable]='!product.available'>
+    <div class="info" >
+      <div class="img-wrapper">
+        <img class="img" [src]='product.img'>
+        <div class="img-placeholder"></div>
+      </div>
+      <h5 class="title">{{product.name}}</h5>
+      <p class="price">$<span>{{product.price}}</span></p>
+      <div class="details">
+        <div class="available" *ngIf = 'product.available'>
+          <hr>
+          <div class="row">
+            <div class="col-8-sm view-details-wrapper">
+              <button type="button" class="view" (click)='onProductClick()'>View details</button>
+            </div>
+            <div class="col-4-sm add-cart-wrapper">
+              <button type="button" class="cart" (click)="onAddToCart()"><i class="fas fa-plus-circle" style="color: rgb(90, 79, 235);"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="not-available" *ngIf = '!product.available'>
+          <hr>
+          <p>Not available</p>
+        </div>
+      </div>
+      <!--span class="category-name" *ngFor='let category of product.categories'>{{category}}</span-->
+      <div class="detail-view" [class.active]='detailViewActive'>
+        <div class="bg" [class.shown]='detailViewActive'></div>
+        <div class="info-wrapper">
+          <p class="d-holder d-title">{{product.name}}</p>
+          <p class="d-holder d-price">$ {{product.price}}</p>
+          <p class="d-holder d-description">{{product.description}}</p>
+        </div>
+        <button type="button" class="hide-detail-btn" (click)='onProductClick()'>Click to hide</button>
+      </div>
+    </div>
+    <div class="bestseller-badge" [class.in-detailed]='detailViewActive' *ngIf = 'product.best_seller'>
+      <span class="star left">&nbsp;</span>
+      <span class="txt">Bestseller</span>
+      <span class="star right">&nbsp;</span>
+    </div>
+  </div>
+  

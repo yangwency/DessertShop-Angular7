@@ -1,0 +1,31 @@
+<head>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+</head>
+<div class="preview" [class.expanded]='expanded'>
+  <button [class.not-shown]='!products.length || expanded' type="button" class="circle" (click)="onCartClick()">
+    <i class="fas fa-shopping-cart" style="color: white;"></i>
+    <div class="indicator"><span>{{numProducts}}</span></div>
+  </button>
+  <div class="fill" [style.height]="expanded ? expandedHeight : inherit" [class.not-shown]='!products.length' [class.animate-plop]='animatePlop' [class.shown]='animatePopout && !expanded'>
+    <div class="expanded-info" [class.shown]='expanded'>
+      <h3>This is what you're gonna buy...</h3>
+      <div class="product" *ngFor="let item of products">
+        <div class="row">
+          <div class="col-6-sm description">
+            <p>{{item.quantity}} x {{item.product.name}}</p>
+          </div>
+          <div class="col-6-sm price">
+            <!-- <p>{{item.quantity*item.product.parsedPrice | currency:'USD':'symbol':'1.0-0' }}</p> -->
+            <p>${{item.quantity*item.product.parsedPrice/100}}</p>
+          </div>
+        </div>
+        <button class="delete-btn" (click) = 'deleteProduct(item.product)'>x</button>
+      </div>
+      <!-- <button type="button" class="pay-btn">Pay {{cartTotal | currency:'USD':'symbol':'1.0-0'}}</button> -->
+      <button type="button" class="pay-btn" routerLink="/game">Pay $ {{cartTotal/100}} </button>
+    <button type="button" class="close-btn" *ngIf='expanded' (click)="onCartClick()">Close</button>
+  </div>
+</div>
+<div class="overlay" [class.shown]='expanded'>
+
+</div>

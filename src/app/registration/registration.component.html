@@ -1,0 +1,91 @@
+<body>
+    <div class="wrapper">
+        <div class="container" style="width:80%;">
+            <br/>
+            <h1><small>Create an Account</small></h1>
+    
+            <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div style="width:50%; float:left;">
+                <br/>
+                <br/>
+                <h2><small>Account Information</small></h2>
+                <br/>
+                <input type="text" placeholder="Username" formControlName="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" required>
+                <input type="email" placeholder="E-mail" formControlName="EmailAddress" [ngClass]="{ 'is-invalid': submitted && f.EmailAddress.errors }" required>
+                <input type="text" placeholder="Balance">
+                <input type="password" placeholder="Password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" required>
+                <input type="password" placeholder="Confirm Password">
+                <br/>
+            </div>
+            <div style="width:50%; float:right;">
+                <br/>
+                <br/>
+                <h2><small>Payment & Delivery Information</small></h2>
+                <br/>
+                <input type="text" placeholder="Card Number">
+                <input type="text" placeholder="Expiration Date">
+                <input type="text" placeholder="Security Code" maxlength="3">
+                <input type="text" placeholder="Holder Name">
+                <input type="text" placeholder="Delivery Address">
+                <br/>
+            </div>
+            <div  style="width:100%; text-align: center;float:left;">
+                <br/>
+                <button [disabled]="loading">Register</button>
+                <br><a class="login" [routerLink]="['/login']">Login</a>
+                <br><a class="login" href="https://12345">Crash</a>
+                <br/>
+                <br/>
+                <div *ngIf="submitted && f.username.errors" class="error">
+                    <div *ngIf="f.username.errors.required">Username is required</div>
+                </div>
+                <div *ngIf="submitted && f.EmailAddress.errors" class="error">
+                    <div *ngIf="f.EmailAddress.errors.required">E-mailAddress is required</div>
+                </div>
+                <div *ngIf="submitted && f.password.errors" class="error">
+                    <div *ngIf="f.password.errors.required">Password is required</div>
+                    <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                </div>
+                <br/><br/><br/><br/><br/><br/>
+            </div>
+            </form>
+        </div>
+    </div>
+    
+    <div class="bg-boxes">
+        <svg width="300px" height="100%" id="col1">
+          <rect width="150px" height="150px" x="75px" y="75px" class="bubble" id="bub1" />
+        </svg>
+        <svg width="200px" height="100%" id="col2">
+          <rect width="100px" height="100px" x="50px" y="50px" class="bubble" id="bub2" />
+        </svg>
+        <svg width="260px" height="100%" id="col3">
+            <rect width="130px" height="130px" x="65px" y="65px" class="bubble" id="bub3" />
+        </svg>
+        <svg width="160px" height="100%" id="col4">
+            <rect width="80px" height="80px" x="40px" y="40px" class="bubble" id="bub4" />
+        </svg>
+        <svg width="240px" height="100%" id="col5">
+            <rect width="120px" height="120px" x="60px" y="60px" class="bubble" id="bub5" />
+        </svg>
+        <!--Here is a triangle-->
+        <svg width="200px" height="100%" id="col6">
+            <polygon points="50,150 100,50 150,150" class="bubble" id="bub6" />
+        </svg>
+        <svg width="200px" height="100%" id="col7">
+            <rect width="100px" height="100px" x="50px" y="50px" class="bubble" id="bub7" />
+        </svg>
+        <svg width="200px" height="100%" id="col8">
+            <rect width="100px" height="100px" x="50px" y="50px" class="bubble" id="bub8" />
+        </svg>
+        <svg width="200px" height="100%" id="col9">
+            <rect width="100px" height="100px" x="50px" y="50px" class="bubble" id="bub9" />
+        </svg>
+        <svg width="200px" height="100%" id="col10">
+            <rect width="100px" height="100px" x="50px" y="50px" class="bubble" id="bub10" />
+        </svg>
+        <svg width="100px" height="100%" id="col11">
+            <rect width="50px" height="50px" x="25px" y="25px" class="bubble" id="bub11" />
+        </svg>
+    </div>     
+</body>
